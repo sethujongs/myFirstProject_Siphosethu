@@ -1,0 +1,125 @@
+<!--
+month_details.html
+------------------
+This page shows details for a specific month.
+It is rendered when a user clicks a month link on results.html.
+Flask passes the selected month and its income/expense values to this template.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Month Details</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fbb1d3 0%, #fbeaf3 100%);
+            font-family: 'Quicksand', 'Montserrat', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .card {
+            max-width: 600px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, #fbeaf3 60%, #fbb1d3 100%);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(180,0,90,0.14);
+            padding: 56px 56px 48px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #b4005a;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            color: #7b2a5a;
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 2;
+        }
+        ul li {
+            margin-bottom: 12px;
+        }
+        .btn {
+            background: linear-gradient(90deg, #e75480 0%, #b4005a 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 2px 8px rgba(180,0,90,0.10);
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #b4005a 0%, #e75480 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Details for {{ month }}</h1>
+        <ul>
+            <li><strong>Income:</strong> {{ details['Income'] }}</li>
+            <li><strong>Expense:</strong> {{ details['Expense'] }}</li>
+        </ul>
+
+        <!-- Comparison Bar: This Month vs Average -->
+        <div style="margin:32px 0 24px 0;">
+            <div style="font-size:1.08rem;color:#b4005a;font-weight:700;margin-bottom:10px;">Comparison to Average</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:32px;">
+                <div style="text-align:center;">
+                    <div style="font-size:1.05rem;color:#e75480;font-weight:700;">Income</div>
+                    <div style="background:#fbb1d3;border-radius:8px;width:120px;height:18px;position:relative;">
+                        <div style="background:#b4005a;border-radius:8px;height:18px;width:{{ income_bar_width }}px;position:absolute;top:0;left:0;"></div>
+                    </div>
+                    <div style="font-size:0.95rem;color:#7b2a5a;margin-top:4px;">
+                        This month: {{ details['Income'] }} | Avg: {{ '%.2f'|format(avg_income) }}
+                    </div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:1.05rem;color:#e75480;font-weight:700;">Expense</div>
+                    <div style="background:#fbeaf3;border-radius:8px;width:120px;height:18px;position:relative;">
+                        <div style="background:#e75480;border-radius:8px;height:18px;width:{{ expense_bar_width }}px;position:absolute;top:0;left:0;"></div>
+                    </div>
+                    <div style="font-size:0.95rem;color:#7b2a5a;margin-top:4px;">
+                        This month: {{ details['Expense'] }} | Avg: {{ '%.2f'|format(avg_expense) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative circles -->
+        <div style="background:rgba(251,177,211,0.18);border-radius:50%;width:120px;height:120px;position:absolute;top:-40px;left:-40px;z-index:1;"></div>
+        <div style="background:rgba(231,84,128,0.12);border-radius:50%;width:80px;height:80px;position:absolute;bottom:-30px;right:-30px;z-index:1;"></div>
+        <div style="background:rgba(180,0,90,0.10);border-radius:50%;width:60px;height:60px;position:absolute;top:20px;right:-20px;z-index:1;"></div>
+
+        <!-- Back button -->
+        <a href="{{ url_for('results') }}" class="btn" style="z-index:2;position:relative;">
+            Back to Results Page
+        </a>
+
+        <!-- Instructions -->
+        <div style="margin-top:32px;color:#b4005a;font-size:1.08rem;font-family:'Quicksand',sans-serif;z-index:2;position:relative;">
+            <strong>Instructions:</strong> <br>
+            This page shows the details for the selected month. <br>
+            Click <b>Back to Results Page</b> to return to your summary dashboard. <br>
+            <span style="font-size:1.5rem;vertical-align:middle;">&#129419;</span> <!-- Butterfly Unicode -->
+        </div>
+    </div>
+</body>
+</html>

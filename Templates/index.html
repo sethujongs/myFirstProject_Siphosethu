@@ -1,0 +1,206 @@
+<!--
+index.html
+----------
+This is the home page of the Financial Data Visualization app.
+Users can upload an Excel file containing their monthly income and expense data.
+The form posts the file to the /upload route in app.py.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Data Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fbb1d3 0%, #fbeaf3 100%);
+            font-family: 'Quicksand', 'Montserrat', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            min-width: 340px;
+            margin: 48px auto 32px auto;
+            background: linear-gradient(135deg, #fbeaf3 60%, #fbb1d3 100%);
+            border-radius: 32px;
+            box-shadow: 0 4px 16px rgba(180,0,90,0.10);
+            padding: 56px 64px 48px 64px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #b4005a;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        p {
+            color: #7b2a5a;
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+        }
+        .btn {
+            background: linear-gradient(90deg, #e75480 0%, #b4005a 100%);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 2px 8px rgba(180,0,90,0.10);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #b4005a 0%, #e75480 100%);
+        }
+        .upload {
+            margin-top: 24px;
+        }
+        .footer {
+            margin-top: 56px;
+            text-align: center;
+            color: #b4005a;
+            font-size: 1rem;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .footer a {
+            color: #e75480;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="position:relative;overflow:hidden;">
+        <!-- Hero Section -->
+    <h1 style="font-size:2.6rem;letter-spacing:2px;position:relative;z-index:2;">Financial Analytics Dashboard</h1>
+        <p style="font-size:1.2rem;margin-bottom:32px;position:relative;z-index:2;">Upload your Excel file and instantly visualize your income and expenses in a sleek, modern dashboard.</p>
+        <!-- More apparent pastel shapes -->
+        <div style="background:rgba(251,177,211,0.35);border-radius:50%;width:220px;height:220px;position:absolute;top:-60px;left:-60px;z-index:1;"></div>
+        <div style="background:rgba(231,84,128,0.22);border-radius:50%;width:160px;height:160px;position:absolute;bottom:-50px;right:-50px;z-index:1;"></div>
+        <div style="background:rgba(180,0,90,0.18);border-radius:50%;width:120px;height:120px;position:absolute;top:60px;right:-40px;z-index:1;"></div>
+        <!-- Piggy bank SVG illustration -->
+        <div style="width:110px;height:110px;position:absolute;bottom:24px;left:24px;z-index:2;">
+            <svg viewBox="0 0 110 110" width="110" height="110">
+                <ellipse cx="55" cy="70" rx="40" ry="28" fill="#fbb1d3" stroke="#b4005a" stroke-width="3"/>
+                <ellipse cx="55" cy="60" rx="30" ry="18" fill="#fff0f6" stroke="#b4005a" stroke-width="2"/>
+                <circle cx="40" cy="65" r="4" fill="#b4005a"/>
+                <rect x="50" y="52" width="10" height="4" rx="2" fill="#b4005a"/>
+                <ellipse cx="80" cy="80" rx="7" ry="4" fill="#e75480"/>
+                <ellipse cx="30" cy="80" rx="7" ry="4" fill="#e75480"/>
+                <ellipse cx="55" cy="98" rx="10" ry="4" fill="#b4005a" opacity="0.2"/>
+            </svg>
+        </div>
+        <!-- Instructions -->
+        <div style="margin-bottom:32px;color:#b4005a;font-size:1.08rem;font-family:'Quicksand',sans-serif;position:relative;z-index:2;">
+            <strong>Instructions:</strong> <br>
+            1. Click or drag your Excel file to the upload zone below.<br>
+            2. Wait for your dashboard to load.<br>
+            3. Explore your analytics and monthly details.<br>
+            4. You can always upload another file to refresh your dashboard.<br>
+        </div>
+        <!-- Motivational quote -->
+        <div style="margin-bottom:32px;text-align:center;color:#e75480;font-size:1.15rem;font-family:'Montserrat',sans-serif;z-index:2;position:relative;">
+            <em>"Small savings today, big dreams tomorrow."</em>
+        </div>
+
+        <!-- Step-by-Step Guide -->
+        <div style="display:flex;justify-content:center;gap:32px;margin-bottom:36px;flex-wrap:wrap;">
+            <div style="background:#fbb1d3;color:#b4005a;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:18px 24px;min-width:120px;text-align:center;font-family:'Montserrat',sans-serif;">
+                <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Step 1</div>
+                <div style="font-size:1rem;">Upload Excel</div>
+            </div>
+            <div style="background:#e75480;color:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:18px 24px;min-width:120px;text-align:center;font-family:'Montserrat',sans-serif;">
+                <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Step 2</div>
+                <div style="font-size:1rem;">View Dashboard</div>
+            </div>
+            <div style="background:#fbeaf3;color:#b4005a;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:18px 24px;min-width:120px;text-align:center;font-family:'Montserrat',sans-serif;">
+                <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Step 3</div>
+                <div style="font-size:1rem;">Explore Insights</div>
+            </div>
+        </div>
+
+    <!-- Dashboard Preview removed -->
+
+        <!-- Drag-and-Drop Upload Zone -->
+        <div id="drop-zone" style="background:#fff0f6;border:2px dashed #b4005a;border-radius:16px;padding:32px 24px;margin-bottom:24px;cursor:pointer;transition:border-color 0.2s;text-align:center;">
+            <span style="color:#b4005a;font-size:1.15rem;font-weight:600;">Drag & drop your Excel file here or click to select</span>
+            <form id="upload-form" class="upload" action="/upload" method="post" enctype="multipart/form-data" style="margin-top:18px;">
+                <input id="file-input" type="file" name="file" accept=".xlsx" required style="display:none;">
+                <button class="btn" type="submit" style="margin-top:12px;">Upload & Analyze</button>
+            </form>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="spinner" style="display:none;text-align:center;margin-bottom:24px;">
+            <div style="border:6px solid #fbeaf3;border-top:6px solid #b4005a;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:0 auto;"></div>
+            <style>@keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }</style>
+            <div style="color:#b4005a;font-size:1rem;margin-top:8px;">Uploading...</div>
+        </div>
+
+        <!-- Success Toast -->
+        <div id="toast" style="display:none;position:fixed;top:32px;right:32px;background:#e75480;color:#fff;padding:18px 32px;border-radius:12px;box-shadow:0 2px 8px rgba(180,0,90,0.10);font-size:1.1rem;font-family:'Montserrat',sans-serif;z-index:999;">File uploaded successfully!</div>
+
+        <div class="footer">
+            <span>Made with Flask & Pandas | <a href="https://github.com/sethujongs/myFirstProject_Siphosethu" target="_blank">GitHub</a></span>
+        </div>
+    </div>
+
+    <script>
+    // Drag-and-drop upload logic
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const uploadForm = document.getElementById('upload-form');
+    const spinner = document.getElementById('spinner');
+    const toast = document.getElementById('toast');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#e75480';
+    });
+    dropZone.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#b4005a';
+    });
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#b4005a';
+        if (e.dataTransfer.files.length) {
+            fileInput.files = e.dataTransfer.files;
+            showSpinner();
+            uploadForm.submit();
+        }
+    });
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) {
+            showSpinner();
+            uploadForm.submit();
+        }
+    });
+    uploadForm.addEventListener('submit', () => {
+        showSpinner();
+    });
+    function showSpinner() {
+        spinner.style.display = 'block';
+    }
+    // Show toast after upload (simulate for demo)
+    function showToast() {
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+    // Uncomment below to simulate toast after upload
+    // showToast();
+    </script>
+</body>
+</html>

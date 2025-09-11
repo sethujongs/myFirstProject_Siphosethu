@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Analytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fbb1d3 0%, #fbeaf3 100%);
+            font-family: 'Quicksand', 'Montserrat', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .dashboard {
+            max-width: 1100px;
+            margin: 48px auto;
+            background: linear-gradient(135deg, #fbeaf3 60%, #fbb1d3 100%);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(180,0,90,0.18);
+            padding: 56px 64px 48px 64px;
+            display: flex;
+            gap: 48px;
+        }
+        .sidebar {
+            flex: 1;
+            min-width: 220px;
+            background: linear-gradient(135deg, #fbb1d3 60%, #fbeaf3 100%);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(180,0,90,0.10);
+            padding: 32px 24px;
+            margin-right: 0;
+        }
+        .sidebar h3 {
+            color: #b4005a;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            color: #7b2a5a;
+            font-size: 1.08rem;
+        }
+        .sidebar ul li {
+            margin-bottom: 12px;
+        }
+        .sidebar ul li a {
+            color: #b4005a;
+            text-decoration: underline;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .main {
+            flex: 3;
+            min-width: 340px;
+        }
+        .main h1 {
+            color: #b4005a;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .main h2 {
+            color: #e75480;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .main .chart-controls {
+            margin-bottom: 32px;
+        }
+        .main .chart-controls label {
+            color: #b4005a;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-right: 12px;
+        }
+        .main .chart-controls select {
+            background: #fbb1d3;
+            color: #b4005a;
+            border: 1px solid #b4005a;
+            border-radius: 7px;
+            padding: 8px 16px;
+            font-size: 1rem;
+            font-family: 'Quicksand', sans-serif;
+            margin-right: 16px;
+        }
+        .main .chart-controls button {
+            background: linear-gradient(90deg, #e75480 0%, #b4005a 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 2px 8px rgba(180,0,90,0.10);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .main .chart-controls button:hover {
+            background: linear-gradient(90deg, #b4005a 0%, #e75480 100%);
+        }
+        .main .chart {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .main .chart img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(180,0,90,0.08);
+        }
+        .main .summary {
+            background: linear-gradient(90deg, #fbb1d3 0%, #fbeaf3 100%);
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(180,0,90,0.06);
+            padding: 28px 32px;
+            margin-bottom: 24px;
+        }
+        .main .summary h3 {
+            color: #b4005a;
+            margin-bottom: 14px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .main .summary ul {
+            list-style: none;
+            padding: 0;
+            color: #7b2a5a;
+            font-size: 1.08rem;
+        }
+        .main .summary ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+    </head>
+    <body>
+    <div style="width:100%;background:linear-gradient(90deg,#fbb1d3 0%,#e75480 100%);padding:38px 0 32px 0;margin-bottom:32px;box-shadow:0 4px 24px rgba(180,0,90,0.10);border-radius:0 0 32px 32px;">
+        <h1 style="text-align:center;color:#b4005a;font-size:4.2rem;font-weight:900;letter-spacing:3px;margin:0;">Analytics Dashboard</h1>
+    </div>
+    <div class="dashboard" style="margin:48px auto;justify-content:center;align-items:center;">
+        <!-- Summary Left as a vertical card -->
+        <div class="summary" style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:18px;align-items:stretch;justify-content:flex-start;background:linear-gradient(135deg,#fbb1d3 60%,#fbeaf3 100%);box-shadow:0 4px 16px rgba(180,0,90,0.12);border-radius:18px;padding:32px 24px;margin-right:0;">
+            <h2 style="color:#e75480;font-size:2rem;font-weight:800;margin-bottom:24px;text-align:left;">Income & Expense Analysis</h2>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+                <div style="background:#fbb1d3;color:#b4005a;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Total Income</div>
+                    <div style="font-size:1.3rem;font-weight:700;">{{ "%.2f"|format(stats.avg_income * data|length) }}</div>
+                </div>
+                <div style="background:#e75480;color:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Total Expense</div>
+                    <div style="font-size:1.3rem;font-weight:700;">{{ "%.2f"|format(stats.avg_expense * data|length) }}</div>
+                </div>
+                <div style="background:#fbeaf3;color:#b4005a;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Avg Income</div>
+                    <div style="font-size:1.3rem;font-weight:700;">{{ "%.2f"|format(stats.avg_income) }}</div>
+                </div>
+                <div style="background:#b4005a;color:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Avg Expense</div>
+                    <div style="font-size:1.3rem;font-weight:700;">{{ "%.2f"|format(stats.avg_expense) }}</div>
+                </div>
+                <div style="background:#e75480;color:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Highest Income Month</div>
+                    <div style="font-size:1.1rem;font-weight:700;">{{ stats.highest_income_month }}</div>
+                </div>
+                <div style="background:#fbb1d3;color:#b4005a;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Lowest Income Month</div>
+                    <div style="font-size:1.1rem;font-weight:700;">{{ stats.lowest_income_month }}</div>
+                </div>
+                <div style="background:#b4005a;color:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Highest Expense Month</div>
+                    <div style="font-size:1.1rem;font-weight:700;">{{ stats.highest_expense_month }}</div>
+                </div>
+                <div style="background:#fbeaf3;color:#b4005a;border-radius:16px;box-shadow:0 2px 8px rgba(180,0,90,0.10);padding:16px 20px;min-width:160px;text-align:left;font-family:'Montserrat',sans-serif;">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:6px;">Lowest Expense Month</div>
+                    <div style="font-size:1.1rem;font-weight:700;">{{ stats.lowest_expense_month }}</div>
+                </div>
+            </div>
+        </div>
+        <!-- Graph Center -->
+        <div style="flex:2;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <form class="chart-controls" method="POST" action="/change_graph" style="margin-bottom:24px;display:flex;align-items:center;gap:16px;">
+                <label for="graph_type" style="color:#b4005a;font-weight:700;font-size:1.15rem;margin-right:12px;">Chart type:</label>
+                <select name="graph_type" id="graph_type" style="background:linear-gradient(90deg,#fbb1d3 0%,#fbeaf3 100%);color:#b4005a;border:2px solid #e75480;border-radius:12px;padding:10px 22px;font-size:1.08rem;font-family:'Quicksand',sans-serif;box-shadow:0 2px 8px rgba(180,0,90,0.10);margin-right:16px;">
+                    <option value="line" {% if graph_type == 'line' %}selected{% endif %}>Line</option>
+                    <option value="bar" {% if graph_type == 'bar' %}selected{% endif %}>Bar</option>
+                    <option value="pie" {% if graph_type == 'pie' %}selected{% endif %}>Pie</option>
+                    <option value="area" {% if graph_type == 'area' %}selected{% endif %}>Area</option>
+                    <option value="scatter" {% if graph_type == 'scatter' %}selected{% endif %}>Scatter</option>
+                    <option value="step" {% if graph_type == 'step' %}selected{% endif %}>Step</option>
+                </select>
+                <button type="submit" style="background:linear-gradient(90deg,#e75480 0%,#b4005a 100%);color:#fff;border:none;padding:12px 32px;border-radius:14px;font-size:1.15rem;font-weight:700;font-family:'Montserrat',sans-serif;box-shadow:0 2px 8px rgba(180,0,90,0.10);cursor:pointer;transition:background 0.2s;">Update Chart</button>
+            </form>
+            <div class="chart">
+                <img src="{{ plot_url }}" alt="Income vs Expense Graph">
+            </div>
+            <!-- Data Table -->
+            <div style="background:#fbeaf3;border-radius:14px;box-shadow:0 2px 8px rgba(180,0,90,0.06);padding:28px 32px;margin-bottom:24px;">
+                <h3 style="color:#b4005a;margin-bottom:14px;font-size:1.2rem;font-weight:700;">Monthly Data Table</h3>
+                <table style="width:100%;border-collapse:collapse;font-size:1.08rem;font-family:'Quicksand',sans-serif;">
+                    <thead>
+                        <tr style="background:#fbb1d3;color:#b4005a;">
+                            <th style="padding:10px 8px;border-radius:8px 0 0 8px;">Month</th>
+                            <th style="padding:10px 8px;">Income</th>
+                            <th style="padding:10px 8px;">Expense</th>
+                            <th style="padding:10px 8px;border-radius:0 8px 8px 0;">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data %}
+                        <tr style="background:#fff0f6;">
+                            <td style="padding:8px 8px;">{{ row['Month'] }}</td>
+                            <td style="padding:8px 8px;">{{ row['Income'] }}</td>
+                            <td style="padding:8px 8px;">{{ row['Expense'] }}</td>
+                            <td style="padding:8px 8px;"><a href="/month/{{ row['Month'] }}" style="color:#b4005a;text-decoration:underline;font-weight:600;font-family:'Montserrat',sans-serif;">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Months Right -->
+        <div class="sidebar" style="flex:1;min-width:220px;">
+            <h3>Monthly Details</h3>
+            <ul>
+                {% for row in data %}
+                    <li><a href="/month/{{ row['Month'] }}">{{ row['Month'] }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- Upload another file footnote at the bottom -->
+    <div style="text-align:center;margin:48px 0 0 0;">
+        <form action="/upload" method="post" enctype="multipart/form-data" style="display:inline-block;background:#fff0f6;padding:18px 32px;border-radius:12px;box-shadow:0 2px 8px rgba(180,0,90,0.10);">
+            <label for="file" style="color:#b4005a;font-weight:600;font-size:1rem;margin-right:12px;">Upload another Excel file:</label>
+            <input type="file" name="file" accept=".xlsx" required style="margin-right:12px;padding:8px 12px;border-radius:7px;border:1px solid #b4005a;background:#fbb1d3;color:#b4005a;font-size:1rem;">
+            <button type="submit" style="background:linear-gradient(90deg,#e75480 0%,#b4005a 100%);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:1rem;font-weight:700;font-family:'Montserrat',sans-serif;box-shadow:0 2px 8px rgba(180,0,90,0.10);cursor:pointer;transition:background 0.2s;">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
+
+</body>
+</html>
